@@ -21,9 +21,9 @@ return {
 
     map(
       "n",
-      "<leader>od",
+      "<leader>op",
       ":NeovimProjectDiscover<CR>",
-      vim.tbl_extend("force", opts_desc, { desc = "[O]pen project [D]iscover" })
+      vim.tbl_extend("force", opts_desc, { desc = "[O]pen [P]roject" })
     )
     map(
       "n",
@@ -37,18 +37,6 @@ return {
       ":NeovimProjectLoadRecent<CR>",
       vim.tbl_extend("force", opts_desc, { desc = "[O]pen project [R]ecent" })
     )
-    map(
-      "n",
-      "<leader>ol",
-      ":NeovimProjectLoadHist<CR>",
-      vim.tbl_extend("force", opts_desc, { desc = "[O]pen project [L]oad Hist" })
-    )
-    map(
-      "n",
-      "<leader>op",
-      ":NeovimProjectLoad<CR>",
-      vim.tbl_extend("force", opts_desc, { desc = "[O]pen project [P]ick" })
-    )
   end,
   dependencies = {
     { "nvim-lua/plenary.nvim" },
@@ -59,4 +47,17 @@ return {
   },
   lazy = false,
   priority = 100,
+  picker = {
+    type = "telescope", -- one of "telescope", "fzf-lua", or "snacks"
+
+    preview = {
+      enabled = true, -- show directory structure in Telescope preview
+      git_status = true, -- show branch name, an ahead/behind counter, and the git status of each file/folder
+      git_fetch = false, -- fetch from remote, used to display the number of commits ahead/behind, requires git authorization
+      show_hidden = true, -- show hidden files/folders
+    },
+    opts = {
+      -- picker-specific options
+    },
+  },
 }
