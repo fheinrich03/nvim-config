@@ -21,6 +21,13 @@ return {
           global = true,
         },
       },
+      filesystem_watchers = {
+        enable = true,
+      },
+      filters = {
+        git_ignored = false, -- standardmäßig an → ignorierte Dateien werden ausgeblendet
+        dotfiles = false, -- dotfiles (z.B. .env, .gitignore) werden gezeigt
+      },
     })
 
     local api = require("nvim-tree.api")

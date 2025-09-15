@@ -52,8 +52,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- NOTE: Custom keybinds
 
--- Paste from Clipboard
--- Normal Mode: Cmd+v = aus macOS Clipboard einfügen
+-- Paste from Clipboard: macOS
+-- Normal Mode: Cmd+v
 vim.keymap.set(
   "n",
   "<D-v>",
@@ -61,7 +61,7 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Paste aus System-Clipboard" }
 )
 
--- Insert Mode: Cmd+v = aus macOS Clipboard einfügen
+-- Insert Mode: Cmd+v
 vim.keymap.set(
   "i",
   "<D-v>",
@@ -69,10 +69,35 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Paste aus System-Clipboard" }
 )
 
--- Command-Line Mode (z. B. : oder /): Cmd+v = aus macOS Clipboard einfügen
+-- Command-Line Mode (z. B. : oder /)
 vim.keymap.set(
   "c",
   "<D-v>",
+  "<C-r>+",
+  { noremap = true, silent = true, desc = "Paste aus System-Clipboard" }
+)
+
+-- Paste from Clipboard: Windows
+-- Normal Mode: Ctrl+v
+vim.keymap.set(
+  "n",
+  "<C-v>",
+  '"+p',
+  { noremap = true, silent = true, desc = "Paste aus System-Clipboard" }
+)
+
+-- Insert Mode: Ctrl+Shift+v
+vim.keymap.set(
+  "i",
+  "<C-v>",
+  "<C-r>+",
+  { noremap = true, silent = true, desc = "Paste aus System-Clipboard" }
+)
+
+-- Command-Line Mode (: oder /): Ctrl+Shift+v
+vim.keymap.set(
+  "c",
+  "<C-v>",
   "<C-r>+",
   { noremap = true, silent = true, desc = "Paste aus System-Clipboard" }
 )
