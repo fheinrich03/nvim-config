@@ -9,8 +9,12 @@ return {
         "<cmd>ToggleTerm direction=horizontal<CR>",
         desc = "New terminal (same pane)",
       },
-      { "<leader>nv", "<cmd>ToggleTerm direction=vertical<CR>", desc = "New terminal (vsplit)" },
-      { "<leader>nj", "<cmd>ToggleTerm direction=tab<CR>", desc = "New terminal (new tab)" },
+      { "<leader>nv", "<cmd>ToggleTerm direction=vertical<CR>", desc = "[N]ew terminal [V]split" },
+      {
+        "<leader>nl",
+        "<cmd>tabnew | terminal lazygit<CR>",
+        desc = "[N]ew Terminal with [L]azygit",
+      },
       -- Quick access to specific terminals (1..3) in the SAME panel/direction
       { "<leader>t1", "<cmd>1ToggleTerm<CR>", desc = "[T]oggle terminal 1" },
       { "<leader>t2", "<cmd>2ToggleTerm<CR>", desc = "[T]oggle terminal 2" },

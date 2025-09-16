@@ -110,5 +110,9 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 
 vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "[Q]uit Window" })
 
+-- [[Manage Tabs]]
+vim.keymap.set("n", "<C-Tab>", "gt", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-S-Tab>", "gT", { noremap = true, silent = true })
+
 -- [[Saving a File]]
 vim.keymap.set("n", "<leader>s", "<cmd>w<CR>", { desc = "[S]save File" })
