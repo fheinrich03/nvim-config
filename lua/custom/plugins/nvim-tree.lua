@@ -12,9 +12,9 @@ return {
       respect_buf_cwd = true,
       update_focused_file = {
         enable = true,
-        update_root = true,
+        update_root = false,
       },
-      view = { width = 36 },
+      view = { width = 46 },
       actions = {
         change_dir = {
           enable = true,
