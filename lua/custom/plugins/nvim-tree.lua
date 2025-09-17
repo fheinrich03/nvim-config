@@ -18,7 +18,7 @@ return {
       actions = {
         change_dir = {
           enable = true,
-          global = true,
+          global = false,
         },
       },
       filesystem_watchers = {

@@ -13,36 +13,11 @@ return {
       },
       "nvim-telescope/telescope-ui-select.nvim",
       { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
-      -- ensure project.nvim is installed (or keep it as a separate spec elsewhere)
-      "ahmedkhalf/project.nvim",
     },
     config = function()
-      require("project_nvim").setup({
-        detection_methods = { "lsp", "pattern" },
-        patterns = { ".git", "package.json", "pyproject.toml", "pom.xml", "build.gradle", "go.mod" },
-        silent_chdir = true,
-      })
-
-      local actions_ok, project_actions = pcall(require, "telescope._extensions.projects.actions") -- safe if extension not present yet
-
-      require("telescope").setup({
-        extensions = {
-          ["ui-select"] = require("telescope.themes").get_dropdown({}), -- <- pass the table directly
-          projects = {
-            on_project_selected = function(prompt_bufnr)
-              if actions_ok then
-                -- only change CWD; do NOT open find_files
-                project_actions.change_working_directory(prompt_bufnr, false)
-              end
-            end,
-          },
-        },
-      })
-
       -- Enable Telescope extensions if they are installed
       pcall(require("telescope").load_extension, "fzf")
       pcall(require("telescope").load_extension, "ui-select")
-      pcall(require("telescope").load_extension, "projects")
 
       -- Builtins / keymaps
       local builtin = require("telescope.builtin")
