@@ -257,17 +257,20 @@ return {
             },
           },
         },
-        ts_ls = {},
-        eslint = {},
-        jsonls = {},
-        jdtls = {},
-        pyright = {}, -- or basedpyright
-        gopls = {},
-        html = {},
-        cssls = {},
-        tailwindcss = {},
-        marksman = {},
-        ltex = {}, -- optional for Markdown spell/grammar
+        ts_ls = {}, -- TypeScript / React
+        eslint = {}, -- JS/TS linting
+        jsonls = {}, -- JSON
+        jdtls = {}, -- Java
+        gopls = {}, -- Go
+        pyright = {}, -- Python
+        html = {}, -- HTML
+        cssls = {}, -- CSS
+        tailwindcss = {}, -- Tailwind
+        marksman = {}, -- Markdown
+        ltex = {}, -- Spell/grammar
+        angularls = {}, -- Angular
+        emmet_ls = {}, -- Emmet (React/HTML snippets)
+        kotlin_language_server = {}, -- if you touch Kotlin/Spring projects
       }
 
       -- Ensure the servers and tools above are installed
