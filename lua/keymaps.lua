@@ -13,27 +13,6 @@ vim.keymap.set(
   { desc = "[O]pen diagnostic [Q]uickfix list" }
 )
 
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
--- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
--- vim.keymap.set("t", "<C-x>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
--- vim.keymap.set("t", "<Esc>", "<Esc>", { noremap = true })
-
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
--- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
--- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
--- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
--- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
--- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
-
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -77,6 +56,15 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Paste aus System-Clipboard" }
 )
 
+-- Terminal Mode
+vim.keymap.set("t", "<D-v>", function()
+  vim.api.nvim_feedkeys(
+    vim.api.nvim_replace_termcodes('<C-\\><C-n>"+pi', true, false, true),
+    "n",
+    false
+  )
+end, { noremap = true, silent = true, desc = "Paste aus Clipboard im Terminal" })
+
 -- Paste from Clipboard: Windows
 -- Normal Mode: Ctrl+v
 vim.keymap.set(
@@ -102,6 +90,15 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Paste aus System-Clipboard" }
 )
 
+-- Terminal Mode: Ctrl+v (Windows/Linux)
+vim.keymap.set("t", "<C-v>", function()
+  vim.api.nvim_feedkeys(
+    vim.api.nvim_replace_termcodes('<C-\\><C-n>"+pi', true, false, true),
+    "n",
+    false
+  )
+end, { noremap = true, silent = true, desc = "Paste aus Clipboard im Terminal" })
+
 -- [[Managing Windows]]
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
@@ -115,4 +112,4 @@ vim.keymap.set("n", "<C-Tab>", "gt", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-S-Tab>", "gT", { noremap = true, silent = true })
 
 -- [[Saving a File]]
-vim.keymap.set("n", "<leader>s", "<cmd>w<CR>", { desc = "[S]save File" })
+vim.keymap.set("n", "<leader>s", "<cmd>wa<CR>", { desc = "[S]ave all Files" })

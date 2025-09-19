@@ -19,6 +19,24 @@ return {
       pcall(require("telescope").load_extension, "fzf")
       pcall(require("telescope").load_extension, "ui-select")
 
+      -- Add paste support in Telescope prompt
+      local sys = vim.loop.os_uname().sysname
+      local paste_key = sys == "Darwin" and "<D-v>" or "<C-v>"
+
+      require("telescope").setup({
+        defaults = {
+          mappings = {
+            i = {
+              [paste_key] = function()
+                local reg = vim.fn.getreg("+")
+                local feed = vim.api.nvim_replace_termcodes(reg, true, false, true)
+                vim.api.nvim_feedkeys(feed, "i", false)
+              end,
+            },
+          },
+        },
+      })
+
       -- Builtins / keymaps
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind in [H]elp" })
