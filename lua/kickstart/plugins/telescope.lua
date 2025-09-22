@@ -47,17 +47,7 @@ return {
       vim.keymap.set("n", "<leader>fa", function()
         builtin.find_files({
           hidden = true,
-          no_ignore = true,
-          find_command = {
-            "fd",
-            "--type",
-            "f",
-            "--hidden",
-            "--max-depth",
-            "1",
-            "--exclude",
-            ".git",
-          },
+          ignore = true,
         })
       end, { desc = "[F]ind in [A]ll Files" })
       vim.keymap.set("n", "<leader>fs", builtin.builtin, { desc = "[F]ind in [S]elect Telescope" })
