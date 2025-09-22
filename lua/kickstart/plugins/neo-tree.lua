@@ -24,6 +24,10 @@ return {
           ["<space>"] = "<space>",
 
           ["<tab>"] = "toggle_preview",
+
+          -- new keymaps
+          ["-"] = "navigate_up",
+          ["<S-CR>"] = "set_root",
         },
       },
       filtered_items = {

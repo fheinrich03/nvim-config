@@ -2,6 +2,24 @@ return {
   "ThePrimeagen/harpoon",
   branch = "harpoon2",
   dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+  opts = {
+    settings = {
+      -- persist to sqlite on UI actions
+      save_on_toggle = true,
+      sync_on_ui_close = true,
+
+      -- key Harpoon's storage by cwd (and optionally git branch)
+      key = function()
+        local cwd = vim.fn.getcwd()
+        -- uncomment next 3 lines for per-branch lists:
+        -- local handle = io.popen("git rev-parse --abbrev-ref HEAD 2>/dev/null")
+        -- local branch = handle and handle:read("*l") or nil
+        -- if handle then handle:close() end
+        -- return branch and (cwd .. "#" .. branch) or cwd
+        return cwd
+      end,
+    },
+  },
   config = function()
     local harpoon = require("harpoon")
 
