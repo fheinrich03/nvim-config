@@ -4,6 +4,7 @@ return {
     projects = {
       "~/repos/*/*",
       "~/.config/*",
+      "D:/app_config/*",
       vim.fn.expand("$LOCALAPPDATA/nvim"),
     },
     picker = {
