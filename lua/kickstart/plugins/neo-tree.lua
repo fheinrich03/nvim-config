@@ -17,8 +17,10 @@ return {
       follow_current_file = { enabled = true, leave_dirs_open = true },
       use_libuv_file_watcher = true,
       bind_to_cwd = true,
+      hijack_netrw_behavior = "open_current",
       window = {
         width = 46,
+        position = "left",
         mappings = {
           -- keep leader key
           ["<space>"] = "<space>",
@@ -51,23 +53,20 @@ return {
       end
     end
 
-    -- Open on plain `nvim` (no file args, no stdin)
+    -- Plain `nvim` (keine Args, kein stdin)
     vim.api.nvim_create_autocmd("VimEnter", {
       callback = function()
         if vim.fn.argc(-1) == 0 and vim.fn.line2byte("$") == -1 then
           vim.defer_fn(open_neotree, 50)
         end
       end,
-      once = true,
     })
 
-    -- Open after session restore (neovim-project)
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "SessionLoadPost",
+    -- Nach Session-Load (neovim-project lädt Sessions) ODER wenn sich das CWD ändert
+    vim.api.nvim_create_autocmd({ "SessionLoadPost", "DirChanged" }, {
       callback = function()
-        vim.defer_fn(open_neotree, 50)
+        vim.defer_fn(open_neotree, 50) -- kurz warten bis Picker/Layouts zu sind
       end,
-      once = true,
     })
   end,
 }
