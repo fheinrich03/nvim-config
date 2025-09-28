@@ -9,6 +9,9 @@ return {
     },
     picker = {
       type = "telescope",
+      preview = {
+        enabled = false,
+      },
     },
   },
   init = function()
