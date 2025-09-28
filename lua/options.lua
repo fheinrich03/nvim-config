@@ -86,4 +86,5 @@ vim.o.confirm = true
 -- vim: ts=2 sts=2 sw=2 et
 
 -- Terminal Theme
-vim.opt.termguicolors = true
+vim.opt.termguicolors = false
+vim.opt.fillchars:append({ eob = " " })
