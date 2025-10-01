@@ -35,39 +35,7 @@ return {
       filtered_items = {
         hide_dotfiles = false,
         hide_gitignored = false,
-        hide_by_pattern = { "term." },
       },
     },
   },
-
-  init = function()
-    local function open_neotree()
-      if vim.bo.filetype ~= "neo-tree" then
-        vim.schedule(function()
-          require("neo-tree.command").execute({
-            action = "show",
-            source = "filesystem",
-            position = "left",
-            reveal = true,
-          })
-        end)
-      end
-    end
-
-    -- Plain `nvim` (keine Args, kein stdin)
-    vim.api.nvim_create_autocmd("VimEnter", {
-      callback = function()
-        if vim.fn.argc(-1) == 0 and vim.fn.line2byte("$") == -1 then
-          vim.defer_fn(open_neotree, 50)
-        end
-      end,
-    })
-
-    -- Nach Session-Load (neovim-project lädt Sessions) ODER wenn sich das CWD ändert
-    vim.api.nvim_create_autocmd({ "SessionLoadPost", "DirChanged" }, {
-      callback = function()
-        vim.defer_fn(open_neotree, 50) -- kurz warten bis Picker/Layouts zu sind
-      end,
-    })
-  end,
 }
