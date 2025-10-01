@@ -262,7 +262,6 @@ return {
         ts_ls = {}, -- TypeScript / React
         eslint = {}, -- JS/TS linting
         jsonls = {}, -- JSON
-        jdtls = {}, -- Java
         gopls = {}, -- Go
         pyright = {}, -- Python
         html = {}, -- HTML
