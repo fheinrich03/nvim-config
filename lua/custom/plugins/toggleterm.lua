@@ -71,7 +71,7 @@ return {
 
           -- exit to normal
           vim.keymap.set("t", "<C-n>", [[<C-\><C-n>]], wk)
-          vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], wk)
+          -- vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], wk)
         end,
       })
     end,
