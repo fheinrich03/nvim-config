@@ -127,3 +127,7 @@ vim.keymap.set("n", "<C-S-Tab>", "gT", { noremap = true, silent = true })
 
 -- [[Saving a File]]
 vim.keymap.set("n", "<leader>s", "<cmd>wa<CR>", { desc = "[S]ave all Files" })
+
+-- [[Motions Without Updating Register]]
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "[P]aste without updating register" })
+vim.keymap.set({ "n", "x" }, "<leader>d", [["_d]], { desc = "[D]elete without updating register" })

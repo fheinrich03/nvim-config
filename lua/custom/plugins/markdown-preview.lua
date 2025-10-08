@@ -22,11 +22,8 @@ return {
   end,
   ft = { "markdown" },
   config = function()
-    vim.keymap.set("n", "<leader>p", "<cmd>MarkdownPreview<CR>", {
-      desc = "[P]review Markdown File",
-    })
-    vim.keymap.set("n", "<leader>tp", "<cmd>MarkdownPreviewStop<CR>", {
-      desc = "[T]oggle Markdown Preview",
+    vim.keymap.set("n", "<leader>m", "<cmd>MarkdownPreview<CR>", {
+      desc = "[M]arkdown Preview File",
     })
   end,
 }
