@@ -35,6 +35,13 @@ return {
             },
           },
         },
+        pickers = {
+          buffers = {
+            sort_lastused = true,
+            ignore_current_buffer = false,
+            sort_mru = true,
+          },
+        },
       })
 
       -- Builtins / keymaps

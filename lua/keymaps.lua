@@ -99,27 +99,20 @@ vim.keymap.set("t", "<C-v>", function()
   )
 end, { noremap = true, silent = true, desc = "Paste aus Clipboard im Terminal" })
 
--- [[Managing Windows]]
+-- [[ Managing Windows ]]
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
-vim.keymap.set("n", "<leader>q", function()
-  local bufnr = vim.api.nvim_get_current_buf()
-  local bt = vim.bo[bufnr].buftype
+vim.keymap.set("n", "<leader>c", function()
+  vim.cmd("q")
+end, { desc = "[C]lose current window" })
 
-  if bt == "" then
-    -- "Normaler" Dateibuffer: erst mit Confirm den Buffer löschen (fragt bei Änderungen),
-    -- danach das Fenster schließen.
-    vim.cmd("confirm bdelete")
-    -- Fenster schließen (falls noch mehrere offen sind)
-    pcall(vim.cmd, "close")
-  else
-    -- Nicht-Dateibuffer (z.B. terminal, help, nofile ...): nur Fenster zu
-    pcall(vim.cmd, "close")
-  end
-end, { desc = "[Q]uit Window + (File) Buffer w/ confirm" })
+-- [[ Manage Buffers ]]
+vim.keymap.set("n", "<leader>qa", function()
+  vim.cmd("bufdo bd!")
+end, { desc = "[Q]uit [A]ll Buffers" })
 
 -- [[Manage Tabs]]
 vim.keymap.set("n", "<C-Tab>", "gt", { noremap = true, silent = true })
