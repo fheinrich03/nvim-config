@@ -3,7 +3,7 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     keys = {
-      { "<leader>tt", "<cmd>ToggleTerm<CR>", desc = "[T]oggle terminal" },
+      { "<leader>tt", "<cmd>ToggleTerm<CR>",                    desc = "[T]oggle terminal" },
       {
         "<leader>nt",
         "<cmd>ToggleTerm direction=horizontal<CR>",
@@ -12,9 +12,9 @@ return {
       { "<leader>nv", "<cmd>ToggleTerm direction=vertical<CR>", desc = "[N]ew terminal [V]split" },
 
       -- Quick access to specific terminals (1..3) in the SAME panel/direction
-      { "<leader>t1", "<cmd>1ToggleTerm<CR>", desc = "[T]oggle terminal 1" },
-      { "<leader>t2", "<cmd>2ToggleTerm<CR>", desc = "[T]oggle terminal 2" },
-      { "<leader>t3", "<cmd>3ToggleTerm<CR>", desc = "[T]oggle terminal 3" },
+      { "<leader>t1", "<cmd>1ToggleTerm<CR>",                   desc = "[T]oggle terminal 1" },
+      { "<leader>t2", "<cmd>2ToggleTerm<CR>",                   desc = "[T]oggle terminal 2" },
+      { "<leader>t3", "<cmd>3ToggleTerm<CR>",                   desc = "[T]oggle terminal 3" },
       -- Cycle “term instances” by count (simple)
       {
         "<leader>gj",
@@ -64,10 +64,6 @@ return {
           vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], wk)
           vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], wk)
           vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], wk)
-
-          -- exit to normal
-          vim.keymap.set("t", "<C-n>", [[<C-\><C-n>]], wk)
-          -- vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], wk)
         end,
       })
     end,

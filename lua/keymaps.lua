@@ -130,3 +130,7 @@ vim.keymap.set("n", "<leader>s", "<cmd>wa<CR>", { desc = "[S]ave all Files" })
 -- Motions Without Updating Register
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "[P]aste without updating register" })
 vim.keymap.set({ "n", "x" }, "<leader>d", [["_d]], { desc = "[D]elete without updating register" })
+
+-- Terminal exit to normal
+vim.keymap.set("t", "<C-n>", [[<C-\><C-n>]], wk)
+-- vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], wk)
