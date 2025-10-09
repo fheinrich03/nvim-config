@@ -99,28 +99,34 @@ vim.keymap.set("t", "<C-v>", function()
   )
 end, { noremap = true, silent = true, desc = "Paste aus Clipboard im Terminal" })
 
--- [[ Managing Windows ]]
+-- Managing Windows
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- Open Lazygit in new Tab
+vim.keymap.set("n", "<leader>nl", function()
+  vim.cmd("tabnew | terminal lazygit")
+end, { desc = "[N]ew tab with [L]azygit" })
+
+-- Close Current Window
 vim.keymap.set("n", "<leader>c", function()
   vim.cmd("q")
 end, { desc = "[C]lose current window" })
 
--- [[ Manage Buffers ]]
+-- Manage Buffers
 vim.keymap.set("n", "<leader>qa", function()
   vim.cmd("bufdo bd!")
 end, { desc = "[Q]uit [A]ll Buffers" })
 
--- [[Manage Tabs]]
+-- Manage Tabs
 vim.keymap.set("n", "<C-Tab>", "gt", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-S-Tab>", "gT", { noremap = true, silent = true })
 
--- [[Saving a File]]
+-- Saving a File
 vim.keymap.set("n", "<leader>s", "<cmd>wa<CR>", { desc = "[S]ave all Files" })
 
--- [[Motions Without Updating Register]]
+-- Motions Without Updating Register
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "[P]aste without updating register" })
 vim.keymap.set({ "n", "x" }, "<leader>d", [["_d]], { desc = "[D]elete without updating register" })

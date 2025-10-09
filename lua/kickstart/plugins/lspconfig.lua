@@ -74,7 +74,15 @@ return {
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
-          map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+          vim.keymap.set("n", "grn", function()
+            local curr_name = vim.fn.expand("<cword>")
+            vim.ui.input({ prompt = "New Name: ", default = "" }, function(new_name)
+              if not new_name or #new_name == 0 then
+                return
+              end
+              vim.lsp.buf.rename(new_name)
+            end)
+          end, { desc = "[R]ename" })
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
