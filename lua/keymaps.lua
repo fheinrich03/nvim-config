@@ -129,8 +129,18 @@ vim.keymap.set("n", "<leader>s", "<cmd>wa<CR>", { desc = "[S]ave all Files" })
 
 -- Motions Without Updating Register
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "[P]aste without updating register" })
-vim.keymap.set({ "n", "x" }, "<leader>d", [["_d]], { desc = "[D]elete without updating register" })
+vim.keymap.set({ "n", "x" }, "<leader>x", [["_d]], { desc = "Delete without updating register" })
 
 -- Terminal exit to normal
 vim.keymap.set("t", "<C-n>", [[<C-\><C-n>]], wk)
 -- vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], wk)
+
+-- Vim Diagnostics Motions
+vim.keymap.set("n", "<leader>dn", function()
+  vim.diagnostic.jump({ count = 1 })
+end, { desc = "[D]iagnostic [N]ext" })
+vim.keymap.set("n", "<leader>dp", function()
+  vim.diagnostic.jump({ count = -1 })
+end, { desc = "[D]iagnostic [P]revious" })
+vim.keymap.set("n", "<leader>ds", vim.diagnostic.open_float, { desc = "[D]iagnostics [S]how" })
+vim.keymap.set("n", "<leader>df", vim.diagnostic.setqflist, { desc = "[D]iagnostics [F]ix" })
