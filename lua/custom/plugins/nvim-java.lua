@@ -1,17 +1,31 @@
 return {
   "nvim-java/nvim-java",
-  config = function()
-    -- Must be called before defining jdtls config
-    require("java").setup()
-
-    -- Define configuration for jdtls (empty here, extend if you need settings)
-    vim.lsp.config("jdtls", {
-      -- on_attach = function(client, bufnr) ... end,
-      -- capabilities = require("blink.cmp").get_lsp_capabilities(),
-      -- settings = { java = { ... } },
-    })
-
-    -- Enable the server
-    vim.lsp.enable("jdtls")
-  end,
+  config = false,
+  dependencies = {
+    {
+      "neovim/nvim-lspconfig",
+      opts = {
+        servers = {
+          jdtls = {
+          },
+        },
+        setup = {
+          jdtls = function()
+            require("java").setup({
+              -- root_markers = {
+              --   "settings.gradle",
+              --   "settings.gradle.kts",
+              --   "pom.xml",
+              --   "build.gradle",
+              --   "mvnw",
+              --   "gradlew",
+              --   "build.gradle",
+              --   "build.gradle.kts",
+              -- },
+            })
+          end,
+        },
+      },
+    },
+  },
 }
