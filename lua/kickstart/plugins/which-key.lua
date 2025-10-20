@@ -13,7 +13,7 @@
 -- after the plugin has been loaded as `require(MODULE).setup(opts)`.
 
 return {
-  { -- Useful plugin to show you pending keybinds.
+  {                     -- Useful plugin to show you pending keybinds.
     "folke/which-key.nvim",
     event = "VimEnter", -- Sets the loading event to 'VimEnter'
     opts = {
@@ -60,11 +60,12 @@ return {
       -- Document existing key chains
       spec = {
         { "<leader>g", group = "[G]o to" },
+        { "<leader>d", group = "[D]iagnostics" },
         { "<leader>n", group = "[N]ew" },
         { "<leader>o", group = "[O]pen" },
         { "<leader>f", group = "[F]ind" },
         { "<leader>t", group = "[T]oggle" },
-        { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+        { "<leader>h", group = "Git [H]unk",   mode = { "n", "v" } },
         { "<leader>l", group = "[L]ist" },
       },
     },
