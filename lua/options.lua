@@ -83,8 +83,7 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
--- vim: ts=2 sts=2 sw=2 et
-
--- Terminal Theme
-vim.opt.termguicolors = false
+-- Wezterm: don't show space character
 vim.opt.fillchars:append({ eob = " " })
+
+-- vim: ts=2 sts=2 sw=2 et
