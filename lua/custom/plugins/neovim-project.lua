@@ -4,8 +4,11 @@ return {
     projects = {
       "~/repos/*/*",
       "~/.config/*",
+      "~/Library/CloudStorage/GoogleDrive-*/My Drive/Obsidian_Vault",
+
+      -- work PC (windows)
       "D:/app_config/*",
-      vim.fn.expand("$LOCALAPPDATA/nvim"),
+      vim.fn.expand("$LOCALAPPDATA/nvim"), -- windows: nvim config location
     },
     picker = {
       type = "telescope",
