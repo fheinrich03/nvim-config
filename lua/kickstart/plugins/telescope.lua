@@ -23,6 +23,29 @@ return {
       local sys = vim.loop.os_uname().sysname
       local paste_key = sys == "Darwin" and "<D-v>" or "<C-v>"
 
+      local ignore_patterns = {
+        "node_modules",
+        ".next",
+        "%.git/",
+        "target/",
+        "%.class",
+        "%.o",
+        "%.pyc",
+        "__pycache__/",
+        "venv/",
+        "%.png",
+      }
+      -- Funktion, um ein ripgrep-Kommando aus den Mustern zu bauen
+      local function build_rg_command()
+        local cmd = { "rg", "--files", "--hidden", "-uu" } -- -uu = ignoriere .gitignore komplett
+        for _, pattern in ipairs(ignore_patterns) do
+          local clean = pattern:gsub("%%", "") -- entferne Lua-Escape-Zeichen (%)
+          table.insert(cmd, "--glob")
+          table.insert(cmd, "!" .. clean) -- eigene excludes
+        end
+        return cmd
+      end
+
       require("telescope").setup({
         defaults = {
           mappings = {
@@ -34,6 +57,7 @@ return {
               end,
             },
           },
+          file_ignore_patterns = ignore_patterns,
         },
         pickers = {
           buffers = {
@@ -49,14 +73,10 @@ return {
       vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind in [H]elp" })
       vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "[F]ind in [K]eymaps" })
       vim.keymap.set("n", "<leader>ff", function()
-        builtin.find_files({ hidden = false, ignore = false })
-      end, { desc = "[F]ind in [F]iles" })
-      vim.keymap.set("n", "<leader>fa", function()
         builtin.find_files({
-          hidden = true,
-          ignore = true,
+          find_command = build_rg_command(),
         })
-      end, { desc = "[F]ind in [A]ll Files" })
+      end, { desc = "[F]ind in [F]iles" })
       vim.keymap.set("n", "<leader>fs", builtin.builtin, { desc = "[F]ind in [S]elect Telescope" })
       vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "[F]ind current [W]ord" })
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind by [G]rep" })
