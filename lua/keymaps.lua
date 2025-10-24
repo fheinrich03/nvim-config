@@ -144,3 +144,9 @@ vim.keymap.set("n", "<leader>dp", function()
 end, { desc = "[D]iagnostic [P]revious" })
 vim.keymap.set("n", "<leader>ds", vim.diagnostic.open_float, { desc = "[D]iagnostics [S]how" })
 vim.keymap.set("n", "<leader>df", vim.diagnostic.setqflist, { desc = "[D]iagnostics [F]ix" })
+
+-- Vim Vertical Motions
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-f>", "<C-f>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-b>", "<C-b>zz")
