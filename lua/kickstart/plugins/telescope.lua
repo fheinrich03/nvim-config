@@ -77,23 +77,22 @@ return {
           find_command = build_rg_command(),
         })
       end, { desc = "[F]ind in [F]iles" })
-      vim.keymap.set("n", "<leader>fs", builtin.builtin, { desc = "[F]ind in [S]elect Telescope" })
-      vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "[F]ind current [W]ord" })
-      vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind by [G]rep" })
-      vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]ind in [D]iagnostics" })
-      vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[F]ind in [R]esume" })
+      vim.keymap.set("n", "<leader>ft", builtin.builtin, { desc = "[F]ind in [T]elescope" })
       vim.keymap.set(
         "n",
-        "<leader>f.",
-        builtin.oldfiles,
-        { desc = '[F]ind Recent Files ("." = repeat)' }
+        "<leader>fs",
+        builtin.lsp_document_symbols,
+        { desc = "[F]ind in Document [S]ymbols" }
       )
+      vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind by [G]rep" })
+      vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]ind in [D]iagnostics" })
       vim.keymap.set(
         "n",
         "<leader><leader>",
-        builtin.buffers,
-        { desc = "[ ] Find existing buffers" }
+        builtin.oldfiles,
+        { desc = "[ ] Find in Recent Files" }
       )
+      vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[F]ind in existing [B]uffers" })
 
       vim.keymap.set("n", "<leader>/", function()
         builtin.current_buffer_fuzzy_find(
