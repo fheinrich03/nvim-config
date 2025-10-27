@@ -8,7 +8,7 @@ return {
   },
   lazy = false,
   keys = {
-    { "<leader>e", ":Neotree focus<CR>", desc = "Focus [E]xplorer", silent = true },
+    { "<leader>e",  ":Neotree focus<CR>",  desc = "Focus [E]xplorer",  silent = true },
     { "<leader>te", ":Neotree toggle<CR>", desc = "Toggle [E]xplorer", silent = true },
   },
   opts = {
@@ -23,13 +23,12 @@ return {
         position = "left",
         mappings = {
           -- keep leader key
-          ["<space>"] = "<space>",
-
-          ["<tab>"] = "toggle_preview",
+          ["<space>"] = "",
 
           -- new keymaps
           ["-"] = "navigate_up",
-          ["<S-CR>"] = "set_root",
+          ["R"] = "set_root",
+          ["<tab>"] = "toggle_preview",
         },
       },
       filtered_items = {
