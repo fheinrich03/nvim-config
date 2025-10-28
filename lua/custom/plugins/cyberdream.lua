@@ -6,6 +6,11 @@ return {
     require("cyberdream").setup({
       saturation = 0.9,
       transparent = true,
+      colors = {
+        dark = {
+          fg = "#eeeeee"
+        }
+      }
     })
     -- enable colorscheme
     vim.cmd("colorscheme cyberdream")
